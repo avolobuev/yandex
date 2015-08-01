@@ -1,0 +1,19 @@
+body
+{
+	font-family: Tahoma;
+}
+button
+{
+	background:blue;
+	color:white;
+	border:1px solid blue;
+	cursor: pointer;
+}
+div
+{
+	text-align: center;
+}
+table
+{
+	width:100%;
+}
