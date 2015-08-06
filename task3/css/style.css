@@ -1,0 +1,76 @@
+body
+{
+    font-family: Tahoma;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#player
+{
+    position: absolute;
+    top: 0;// calc(50% - 256px); 
+    right: 0; 
+    left: 0; 
+    bottom: 0;
+    text-align: center;
+    margin: auto;
+}
+#layer
+{
+    position: absolute;
+    top: 0;// calc(50% - 256px); 
+    right: 0; 
+    left: 0; 
+    bottom: 0;
+    text-align: center;
+    margin: auto;
+    z-index: 100;
+    height: 512px;
+    width:314px;
+    /*margin: auto;*/
+    box-shadow: 2px 2px 4px;
+    border-radius: 5px;
+    padding: 12px;
+    background: #ffe974;float: none;
+}
+img:hover
+{
+    cursor: pointer;
+}
+#display
+{
+    top: 0;
+}
+#dropzone
+{
+    background: white;
+    border-radius: 5px;
+    border:1px solid red;
+}
+
+#dropzone.hover
+{
+    transition: all .3s linear;
+    border: 2px solid red;
+}
+#dropzone.error
+{
+    background: lavender;
+}
+#dropzone.drop
+{
+    background: white;
+}
+.hidden
+{
+    display:none;
+    visibility: hidden;
+}
+canvas
+{
+    float: none;
+}
+marquee
+{
+    
+}
