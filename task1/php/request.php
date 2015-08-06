@@ -40,7 +40,7 @@ function getInfo($url)//gather info from source and prepare it for sending
                 {
                     if($td_child->nodeType == XML_ELEMENT_NODE && $td_child->tagName === 'img')//to get src of img element
                     {
-                        $line[$j] = $td_child->getAttribute('src');
+                        $line[$j] = $td_child->getAttribute('src');//
                         $j++;
                     }
                 }
@@ -55,14 +55,13 @@ function getInfo($url)//gather info from source and prepare it for sending
 //main
 try 
 {
-    $url = 'http://www.vnukovo.ru/flights/online-timetable';
-	//$url = '../temp/vno.php';
+    $url = 'http://www.vnukovo.ru/flights/online-timetable/';// '../temp/vno.php'
     $data_from_source = getInfo($url);
-    $table_to_send = "<table id='table_content'>";
+    $table_to_send = '<table id="table_content">';
 
     for($i = 0; $i < count($data_from_source); ++$i)
     {
-        $table_to_send .= "<tr>";
+        $table_to_send .= '<tr>';
         
             //a bit of hardcode, because source is not very good
             //and not very consistant and standard
@@ -76,22 +75,21 @@ try
                }
                else 
                {
-                    $table_to_send .= '<td data-title= "ТЕРМИНАЛ '.$data_from_source[$i][5].'" align="center" width="10%"><img src="img/departure.png"/></td>';//flight type
+                    $table_to_send .= '<td data-title= "ТЕРМИНАЛ '.$data_from_source[$i][5].'" width="10%"><img src="img/departure.png"/></td>';//flight type
                }
                
                //flight number
                
-               $table_to_send .= '<td data-title= "ТЕРМИНАЛ '.$data_from_source[$i][5].'" align="center" width="10%">'.$data_from_source[$i][1].' </td>';
+               $table_to_send .= '<td data-title= "ТЕРМИНАЛ '.$data_from_source[$i][5].'" width="10%"><p>'.$data_from_source[$i][1].'</p></td>';
                
                //company
                
-               $table_to_send .= '<td data-title= "ТЕРМИНАЛ '.$data_from_source[$i][5].'" align="center" width="20%">'.$data_from_source[$i][2].'</td>';
-			   //if we need image from source then should add:"<img src="'.$url.$data_from_source[$i][3].'" />"
+               $table_to_send .= '<td data-title= "ТЕРМИНАЛ '.$data_from_source[$i][5].'" width="20%"><p>'.$data_from_source[$i][2].'</p></td>';
                
                
                //dest
                
-               $table_to_send .= '<td data-title= "ТЕРМИНАЛ '.$data_from_source[$i][5].'" align="center" width="20%">'.$data_from_source[$i][4].'</td>';
+               $table_to_send .= '<td data-title= "ТЕРМИНАЛ '.$data_from_source[$i][5].'" width="20%"><p>'.$data_from_source[$i][4].'</p></td>';
                
                
                //get time from string
@@ -99,24 +97,24 @@ try
                preg_match('/[\d]{2}\:[\d]{2}/', $data_from_source[$i][0], $temp);
                if(count($temp) != 0)
                {    
-                   $table_to_send .= '<td data-title= "ТЕРМИНАЛ '.$data_from_source[$i][5].'" align="center" width="10%">'.$temp[0].'</td>';//time         
+                   $table_to_send .= '<td data-title= "ТЕРМИНАЛ '.$data_from_source[$i][5].'" width="10%"><p>'.$temp[0].'</p></td>';//time
                }
                else 
                {
-                    $table_to_send .= '<td data-title= "ТЕРМИНАЛ '.$data_from_source[$i][5].'" align="center" width="10%">-:-</td>';//time
+                    $table_to_send .= '<td data-title= "ТЕРМИНАЛ '.$data_from_source[$i][5].'" width="10%"><p>-:-</p></td>';//time
                }
                
                //status
-               $table_to_send .= '<td data-title= "ТЕРМИНАЛ '.$data_from_source[$i][5].'" align="center" width="20%">'.$data_from_source[$i][6].'</td>';
+               $table_to_send .= '<td data-title= "ТЕРМИНАЛ '.$data_from_source[$i][5].'" text= "ТЕРМИНАЛ '.$data_from_source[$i][5].'" width="20%"><p>'.$data_from_source[$i][6].'</p></td>';
                
                //info
-               $table_to_send .= '<td class="td_content_last" align="center" width="10%">ТЕРМИНАЛ '.$data_from_source[$i][5].'</td>';
+               $table_to_send .= '<td class="td_content_last" width="10%"><p>ТЕРМИНАЛ '.$data_from_source[$i][5].'</p></td>';
             }
         
-        $table_to_send .= "</tr>";
+        $table_to_send .= '</tr>';
     }
     
-    $table_to_send .= "</table>";
+    $table_to_send .= '</table>';
     
     echo $table_to_send;
 } 

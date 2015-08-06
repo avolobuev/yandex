@@ -1,33 +1,26 @@
 body
 {
-    font-family: Impact;
-    font-size: 20px;
-    float: none;
+    font-family: Verdana; 
+    font-weight: bold;
+    font-size: 14px;
 }
 .top
 {
     background: #ffff99;
     color:black;
     width:100%;
-    text-align: center;
-    vertical-align: central;
     border:0;
-    top:50px;
     box-shadow: 2px 2px 1px silver;
-    vertical-align: middle;
     position: fixed; top:0; left: 0;
 }
 .content
 {
     color:black;
     width:100%;
-    text-align: center;
-    vertical-align: central;
     border:0;
     top:50px;
     left:0;right:0;
     box-shadow: 2px 2px 1px silver;
-    vertical-align: middle;
     margin-top: 5px;
     position: absolute;
     z-index: -1;
@@ -35,43 +28,53 @@ body
 
 #table_in_top_div
 {
+    table-layout: fixed;
     width:100%;
+    display: inline-table;
     height:50px;
     border-collapse: collapse;
 }
 
-.td_header
+#table_in_top_div tr td
 {
     border-right: 2px solid silver;
+    text-align: center;
 }
 
-.td_header_last:hover
+#table_in_top_div tr td:last-child
+{
+    border: 0;
+}
+
+#table_in_top_div tr td:hover
 {
     cursor: pointer;
     background: white;
 }
-
-.td_header:hover
-{
-    cursor: pointer;
-    background: white;
-}
-
-.td_content_last { }
 
 #table_content
 {
+    table-layout: fixed;
     width:100%;
-    height:50px;
+    display: inline-table;
     border-collapse: collapse;
     top:20px;
-    font-size: 16px;
+    font-size: 12px;
 }
+
 #table_content tr td
 {
     border-bottom: 1px solid silver;
     border-right: 1px solid silver;
+    text-align: center;
 }
+
+#table_content tr td:last-child
+{
+    border-bottom: 1px solid silver;
+    border-right: 0;
+}
+
 #table_content tr:nth-child(odd)
 {
     background: rgb(245,245,245);
@@ -84,32 +87,56 @@ body
     cursor: pointer;
 }
 
-@media only screen and (max-width:1048px)
+@media only screen and (max-width:1024px)
 {
-    .td_content_last, .td_header_last
+    #table_content tr td:last-child,  #table_in_top_div tr td:last-child
     {
         display: none;
         visibility: hidden;
     }
-    #table_content tr td:focus:after
+    #table_content tr td:active:after
     {
-        content: attr(data-title);
-        position: absolute;
-        z-index: 1;
+        content:attr(data-title);
+        position:absolute;
+        z-index: 100;
         background: rgba(255,255,230,0.9);
         padding: 5px 10px;
-        font-size: 18px;
+        font-size: 12px;
+    }
+    #table_content tr td
+    {
+        text-align:left;
+    }
+    #table_content tr td:first-child, #table_content tr td:nth-child(5)
+    {
+        text-align:center;
     }
 }
 
-@media only screen and (max-width:500px)
+@media only screen and (max-width:860px)
 {
-    body
+    #table_content tr td:first-child,  #table_in_top_div tr td:first-child
     {
-        font-size: 12px;
+        display: none;
+        visibility: hidden;
     }
-    #table_content
+}
+
+@media only screen and (max-width:640px)
+{
+    #table_content tr td:nth-child(3),  #table_in_top_div tr td:nth-child(3)/*to throw company name*/
     {
-        font-size: 10px;
+        display: none;
+        visibility: hidden;
     }
+}
+
+p
+{
+    white-space: nowrap;
+    width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 5px;
+    padding-right: 15px;
 }
